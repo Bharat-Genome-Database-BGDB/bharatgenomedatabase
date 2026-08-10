@@ -1,0 +1,249 @@
+/* ──────────────────────────────────────────────────────────
+   Bharat Genome Database (BGDB) — Species Catalog Styles
+   ────────────────────────────────────────────────────────── */
+
+.catalog-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+}
+
+.catalog-hero-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.catalog-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--slate-dark, #0f172a);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-serif, Georgia, serif);
+}
+
+.catalog-hero-subtitle {
+  color: var(--slate-muted, #64748b);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Search Box Container */
+.catalog-search-card {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--color-white, #ffffff);
+  border-radius: var(--border-radius-bento, 12px);
+  border: 1px solid var(--slate-border, #e2e8f0);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.catalog-search-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75srem;
+}
+
+.catalog-search-label {
+  font-weight: 600;
+  color: var(--slate-dark, #0f172a);
+  font-size: 0.95rem;
+}
+
+.catalog-search-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: var(--slate-light, #f8fafc);
+  color: var(--slate-dark, #0f172a);
+}
+
+.catalog-search-input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  background-color: #ffffff;
+}
+
+/* Sticky Quick-Jump Alphabet Bar */
+.catalog-jump-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  position: sticky;
+  top: 1rem;
+  zIndex: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.catalog-jump-label {
+  align-self: center;
+  margin-right: 0.5rem;
+  fontWeight: 600;
+  color: #475569;
+  fontSize: 0.9rem;
+}
+
+.catalog-jump-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.catalog-jump-pill:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Section Header for each Alphabet */
+.catalog-letter-section {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.catalog-letter-header {
+  border-bottom: 2px solid #0284c7;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.catalog-letter-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.catalog-letter-count {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Species Bento Grid */
+.catalog-species-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.catalog-species-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalog-species-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-species-img-wrap {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f8fafc;
+}
+
+.catalog-species-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-species-placeholder {
+  height: 100px;
+  width: 100%;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.catalog-species-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.catalog-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.catalog-kingdom-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.catalog-tier-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+.catalog-common-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.catalog-sci-name {
+  font-style: italic;
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.catalog-family-text {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.catalog-card-footer {
+  padding-top: 1rem;
+  border-top: 1px solid #f1f5f9;
+}

@@ -1,0 +1,460 @@
+/* src/styles/admin.css - Centralized Admin Curation Component System */
+@import 'react-quill-new/dist/quill.snow.css';
+
+.admin-wrapper {
+  padding: 3rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header & Control Bar */
+.admin-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-header-title {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.admin-header-subtitle {
+  color: var(--slate-muted, #64748b);
+  margin: 0;
+}
+
+.admin-header-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Reusable Admin Buttons */
+.admin-btn-sm {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.admin-btn-md {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.admin-btn-lg {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+}
+
+.admin-btn-cancel {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* Workflow Guide Banner */
+.admin-guide-card {
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+}
+
+.admin-guide-title {
+  font-weight: bold;
+  color: #0369a1;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.admin-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #0c4a6e;
+}
+
+/* Dropdown Species Selector Card */
+.admin-select-card {
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--slate-light, #f8fafc);
+}
+
+.admin-select-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.admin-select-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+/* Status Alert Banners */
+.admin-status-box {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.admin-status-box.error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.admin-status-box.success {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+/* Main Form Scaffolding */
+.admin-form-card {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.admin-section-title {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.admin-form-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.admin-input-text {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+}
+
+.admin-input-text.error {
+  border-color: #ef4444;
+}
+
+.admin-inline-validation {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.admin-inline-validation.taken { color: #dc2626; }
+.admin-inline-validation.available { color: #16a34a; }
+.admin-inline-validation.checking { color: #64748b; }
+
+/* Grid Utilities */
+.admin-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.admin-grid-taxonomy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* External Resources Section */
+.admin-resource-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.admin-resource-title {
+  font-size: 1.15rem;
+  color: #1e293b;
+  margin: 0;
+}
+
+.admin-resource-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.admin-btn-add-resource {
+  background-color: #e2e8f0;
+  border: none;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.admin-btn-remove {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: auto;
+  flex-shrink: 0;
+  justify-self: start;
+}
+
+/* Image Upload & Contextual Feedback */
+.admin-upload-box {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.admin-upload-status {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.admin-upload-status.error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.admin-upload-status.success {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.admin-upload-status.uploading {
+  background-color: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.admin-image-preview-card {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.75rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.admin-preview-thumbnail {
+  width: 110px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+}
+
+.admin-preview-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.admin-preview-info-title {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.admin-preview-info-url {
+  font-size: 0.75rem;
+  color: #64748b;
+  word-break: break-all;
+}
+
+/* WYSIWYG Description Field */
+.admin-wysiwyg-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  flex-wrap: wrap;
+}
+
+.admin-toolbar-btn {
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.admin-toolbar-btn.bold { font-weight: bold; }
+.admin-toolbar-btn.italic { font-style: italic; }
+.admin-toolbar-btn.heading { font-weight: 600; }
+.admin-toolbar-btn.link { color: #0284c7; }
+
+.admin-textarea-wysiwyg {
+  width: 100%;
+  padding: 0.75rem;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Checkbox Groups */
+.admin-checkbox-group {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.admin-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Action Control Bar */
+.admin-action-bar {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* src/styles/admin.css - Cleaned Combobox Component System */
+
+.admin-combobox-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.admin-combobox-input-group {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.admin-combobox-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 0.75rem; /* Space for arrow icon */
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+}
+
+.admin-combobox-arrow {
+  position: absolute;
+  right: 0.75rem;
+  color: #64748b;
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+
+.admin-combobox-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+.admin-combobox-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.admin-combobox-item:hover {
+  background-color: #f1f5f9;
+}
+
+.admin-combobox-item-name {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.admin-combobox-item-sci {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #64748b;
+}
+
+.admin-combobox-no-results {
+  padding: 0.75rem 1rem;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.admin-combobox-clear {
+  padding: 0.75rem 1rem;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.admin-combobox-clear:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}

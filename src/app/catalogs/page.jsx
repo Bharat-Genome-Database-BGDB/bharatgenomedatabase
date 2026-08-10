@@ -1,85 +1,209 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Layout from '@layout/Layout';
-import "@styles/main.css";
+import { supabase } from '@db/supabaseClient';
+import Layout from '@components/Layout/Layout';
+import '@styles/main.css';
+import '@styles/catalog.css';
 
-export default function AcademicsPage() {
-  const courses = [
-    {
-      title: "Hands-on Generative AI & Deep Learning Workshops",
-      target: "Ph.D. Scholars & Early-Career Researchers",
-      desc: "Intensive, project-based bootcamps covering large language models (LLMs) in biology, sequence transformers, and neural network architectures for biological sequence design."
-    },
-    {
-      title: "Dissertation & Thesis Mentorship",
-      target: "Postgraduate & Ph.D. Candidates",
-      desc: "Direct research guidance, computational infrastructure access, and co-advisorship for university students executing master's theses or doctoral dissertations in bioinformatics and computational genomics."
-    },
-    {
-      title: "Scientific Communication & Open Science",
-      target: "Doctoral Scholars & University Faculty",
-      desc: "A foundational course focusing on grant drafting, high-impact manuscript preparation, open science practices, and transparent research reporting."
+export default function CatalogsPage() {
+  const [speciesList, setSpeciesList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    fetchCatalogs();
+  }, []);
+
+  const fetchCatalogs = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('species_catalog')
+        .select('*')
+        .eq('is_published', true)
+        .order('common_name', { ascending: true });
+
+      if (error) throw error;
+      setSpeciesList(data || []);
+    } catch (err) {
+      console.error('Error loading species catalogs:', err.message);
+      setErrorMessage('Failed to load species catalog from database.');
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
+
+  const filteredSpecies = speciesList.filter((item) => {
+    const query = searchTerm.toLowerCase();
+    const common = item.common_name?.toLowerCase() || '';
+    const scientific = item.scientific_name?.toLowerCase() || '';
+    const family = item.family?.toLowerCase() || '';
+    return common.includes(query) || scientific.includes(query) || family.includes(query);
+  });
+
+  const groupedByAlphabet = filteredSpecies.reduce((acc, item) => {
+    const firstLetter = item.common_name ? item.common_name.charAt(0).toUpperCase() : '#';
+    if (!acc[firstLetter]) {
+      acc[firstLetter] = [];
+    }
+    acc[firstLetter].push(item);
+    return acc;
+  }, {});
+
+  const activeAlphabetKeys = Object.keys(groupedByAlphabet).sort();
 
   return (
-    <Layout 
-      title="Academic Programs & Research Mentorship | GenAI Research Labs" 
-      description="Bridging the gap between computational innovation and academic curriculum through workshops, research guidance, and degree development."
-    >
-      <main className="container py-xl">
-        {/* ─── HERO SECTION ─── */}
-        <header className="hero mb-lg">
-          <span className="badge mb-md">Academic Excellence</span>
-          <h1 className="hero-title">Academic Programs & Research Mentorship</h1>
-          <p className="hero-tagline">
-            Bridging the gap between computational innovation and academic curriculum through workshops, research guidance, and degree development.
+    <Layout>
+      <div className="content-wrapper catalog-wrapper">
+        
+        {/* Page Header Section */}
+        <div className="catalog-hero-section">
+          <h1 className="hero-title catalog-hero-title">
+            Species Genome Catalog
+          </h1>
+          <p className="catalog-hero-subtitle">
+            Explore sequenced flora, fauna, and microbial genomes cataloged across the Bharat Genome Database. Browse alphabetically or search live records.
           </p>
-        </header>
+        </div>
 
-        {/* ─── COURSES LIST ─── */}
-        <section className="section-stack mb-xl">
-          <div className="text-center mb-lg">
-            <h2>Academic Workshops & Mentorship Tracks</h2>
+        {/* Search & Filter Section */}
+        <div className="card catalog-search-card">
+          <div className="catalog-search-group">
+            <label htmlFor="catalog_search" className="catalog-search-label">
+              Filter Catalog Contents:
+            </label>
+            <input
+              id="catalog_search"
+              type="text"
+              className="catalog-search-input"
+              placeholder="🔍 Search by common name (e.g., Mango), scientific name (e.g., Mangifera), or family..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
-          <div className="grid-3">
-            {courses.map((course, idx) => (
-              <div key={idx} className="card p-xl flex flex-column justify-content-between">
-                <div>
-                  <span className="badge mb-md">{course.target}</span>
-                  <h3 className="card-title">{course.title}</h3>
-                  <p className="card-body">{course.desc}</p>
-                </div>
-              </div>
+        </div>
+
+        {/* Quick-Jump Alphabet Anchor Bar */}
+        {!loading && activeAlphabetKeys.length > 0 && (
+          <div className="catalog-jump-bar">
+            <span className="catalog-jump-label">
+              Jump to:
+            </span>
+            {activeAlphabetKeys.map((letter) => (
+              <a
+                key={letter}
+                href={`#letter-${letter}`}
+                className="catalog-jump-pill"
+              >
+                {letter}
+              </a>
             ))}
           </div>
-        </section>
+        )}
 
-        {/* ─── UNIVERSITY PARTNERSHIP FEATURE ─── */}
-        <section className="section-stack">
-          <div className="card p-xl">
-            <div className="flex align-items-center gap-md mb-md">
-              <div className="icon-box">
-                <i className="fas fa-university"></i>
-              </div>
-              <span className="badge">Curriculum Development for NICHE</span>
-            </div>
-            <h2 className="card-title" style={{ fontSize: '2rem' }}>Master's Program in Microbiome Studies</h2>
-            <p className="card-body mb-lg" style={{ marginTop: '12px' }}>
-              Developed in partnership with the <strong>Noorul Islam Centre for Higher Education (NICHE)</strong>, 
-              this pioneer curriculum offers a multidisciplinary postgraduate degree bridging metagenomics, computational biology, 
-              clinical microbiome applications, and biostatistics. It prepares students for research leadership in precision medicine, 
-              agriculture, and environmental biotechnology.
-            </p>
-            <div>
-              <Link href="/contact?intent=academic_intake" className="btn-solid">
-                Inquire About Academic Collaboration <i className="fas fa-arrow-right"></i>
-              </Link>
-            </div>
+        {/* Loading & Error States */}
+        {loading && (
+          <div style={{ textAlign: 'center', padding: '4rem 0', color: '#64748b', fontSize: '1.1rem' }}>
+            ⏳ Loading species catalog from database...
           </div>
-        </section>
-      </main>
+        )}
+
+        {errorMessage && (
+          <div style={{ textAlign: 'center', padding: '2rem', color: '#dc2626', background: '#ffeeec', borderRadius: '8px' }}>
+            {errorMessage}
+          </div>
+        )}
+
+        {!loading && activeAlphabetKeys.length === 0 && (
+          <div style={{ textAlign: 'center', padding: '4rem 0', color: '#64748b' }}>
+            <h3>No species found matching your search criteria.</h3>
+            <p>Try clearing your search filter to view all available entries.</p>
+          </div>
+        )}
+
+        {/* Alphabet Sections List */}
+        {!loading && activeAlphabetKeys.map((letter) => (
+          <div key={letter} id={`letter-${letter}`} className="catalog-letter-section">
+            
+            {/* Alphabet Section Heading */}
+            <div className="catalog-letter-header">
+              <h2 className="catalog-letter-title">
+                {letter}
+              </h2>
+              <span className="catalog-letter-count">
+                ({groupedByAlphabet[letter].length} {groupedByAlphabet[letter].length === 1 ? 'species' : 'species'})
+              </span>
+            </div>
+
+            {/* Species Grid for this Letter */}
+            <div className="catalog-species-grid">
+              {groupedByAlphabet[letter].map((species) => (
+                <div key={species.id} className="card catalog-species-card">
+                  
+                  {species.cover_image_url ? (
+                    <div className="catalog-species-img-wrap">
+                      <img 
+                        src={species.cover_image_url} 
+                        alt={species.common_name} 
+                        className="catalog-species-img"
+                      />
+                    </div>
+                  ) : (
+                    <div className="catalog-species-placeholder">
+                      🧬 {species.kingdom || 'Genomic Specimen'}
+                    </div>
+                  )}
+
+                  <div className="catalog-species-body">
+                    <div>
+                      <div className="catalog-badge-row">
+                        <span className="catalog-kingdom-badge">
+                          {species.kingdom || 'Flora'}
+                        </span>
+                        {species.access_tier && (
+                          <span className="catalog-tier-label">
+                            Tier: {species.access_tier}
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="catalog-common-name">
+                        {species.common_name}
+                      </h3>
+
+                      <p className="catalog-sci-name">
+                        {species.scientific_name}
+                      </p>
+
+                      {species.family && (
+                        <p className="catalog-family-text">
+                          <strong>Family:</strong> {species.family}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="catalog-card-footer">
+                      <Link
+                        href={`/catalogs/${species.slug}`}
+                        className="btn-solid"
+                        style={{ display: 'block', textAlign: 'center', padding: '0.6rem 1rem', borderRadius: '8px', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem' }}
+                      >
+                        View Genome Record →
+                      </Link>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+
+          </div>
+        ))}
+
+      </div>
     </Layout>
   );
 }
