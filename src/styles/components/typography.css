@@ -16,16 +16,12 @@ h6 {
 
 /* ─── Global Text Flow & Word Protection ─── */
 body, p, span, a, li, td, th, h1, h2, h3, h4, h5, h6 {
-  text-align: left;           /* Disables forced justification gaps */
-  word-break: normal;         /* CRITICAL: Stops browsers from splitting words mid-way */
-  overflow-wrap: break-word;  /* Allows long strings/URLs to wrap cleanly */
-  hyphens: none;              /* Prevents automatic hyphenation splits */
+  /* word-wrap: normal;          */
+  /* overflow-wrap: break-word;   */
+  flex-wrap: wrap;
+  hyphens: auto;
 }
 
-/* For long machine tokens, hashes, or accession codes ONLY */
-.break-token {
-  word-break: break-all;
-}
 
 h1 {
   font-size: clamp(2.5rem, 5vw, 3.5rem);

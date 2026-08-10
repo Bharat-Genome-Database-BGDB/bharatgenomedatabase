@@ -45,6 +45,13 @@ export default function SpeciesDetailPage() {
     }
   };
 
+  const sanitizeHtmlContent = (htmlString) => {
+    if (!htmlString) return '';
+    return htmlString
+      .replace(/class="ql-align-justify"/g, '') // Strip Quill's forced justification
+      .replace(/&nbsp;/g, ' ');                  // Convert non-breaking spaces to normal spaces
+  };
+
   if (loading) {
     return (
       <Layout>
@@ -69,10 +76,11 @@ export default function SpeciesDetailPage() {
     );
   }
 
+
   return (
     <Layout>
       <div className="container section-stack" style={{ paddingTop: '2.5rem' }}>
-        
+
         {/* Navigation Breadcrumb */}
         <div>
           <Link href="/catalogs" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--ink-muted)', fontWeight: 600, fontSize: '0.95rem' }}>
@@ -118,17 +126,18 @@ export default function SpeciesDetailPage() {
 
         {/* Two-Column Detailed Body Grid */}
         <div className="grid grid-2" style={{ alignItems: 'start' }}>
-          
+
           {/* MAIN COLUMN (Description & JBrowse Links) */}
           <div className="section-stack">
-            
+
             {/* Overview / Description */}
-            <div className="card">
+           <div className="card">
               <h3 className="card-title">📖 Genomic Overview & Summary</h3>
               {species.description ? (
-                <div className="card-body" style={{ marginTop: '1rem' }}>
-                  <div dangerouslySetInnerHTML={{ __html: species.description }} />
-                </div>
+                <div 
+                  className="card-body"
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtmlContent(species.description) }}
+                />
               ) : (
                 <p style={{ color: 'var(--ink-muted)', fontStyle: 'italic' }}>No detailed description provided for this specimen yet.</p>
               )}
@@ -144,11 +153,11 @@ export default function SpeciesDetailPage() {
                 <div className="section-stack" style={{ gap: '12px' }}>
                   {species.jbrowse_links.map((jb, idx) => (
                     jb.jbrowse_url ? (
-                      <a 
-                        key={idx} 
-                        href={jb.jbrowse_url} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        key={idx}
+                        href={jb.jbrowse_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="card"
                         style={{ padding: '16px 20px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', textDecoration: 'none' }}
                       >
@@ -171,11 +180,11 @@ export default function SpeciesDetailPage() {
                 <div className="section-stack" style={{ gap: '12px', marginTop: '1rem' }}>
                   {species.external_resources.map((res, idx) => (
                     res.url ? (
-                      <a 
-                        key={idx} 
-                        href={res.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        key={idx}
+                        href={res.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="card"
                         style={{ padding: '16px 20px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', textDecoration: 'none' }}
                       >
@@ -192,7 +201,7 @@ export default function SpeciesDetailPage() {
 
           {/* SIDEBAR COLUMN (Taxonomic Ranks & Genomic Metrics) */}
           <div className="section-stack">
-            
+
             {/* Taxonomic Hierarchy Card */}
             <div className="card">
               <h3 className="card-title">🌿 Taxonomic Hierarchy</h3>

@@ -14,7 +14,14 @@
   transition: all var(--transition-smooth, 0.2s ease);
 }
 
-
+.card-body p,
+.card-body span {
+  text-align: left !important;
+  text-justify: none !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  hyphens: none !important;
+}
 
 .card:hover {
   border-color: var(--card-border-accent);
