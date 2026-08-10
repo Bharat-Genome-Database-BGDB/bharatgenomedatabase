@@ -13,14 +13,9 @@
 .footer-inner {
   display: grid;
   gap: 40px;
-  grid-template-columns: 2fr repeat(2, 1fr);
+  grid-template-columns: 2fr 1fr;
   margin: 0 auto;
   max-width: 1200px;
-}
-
-/* Adjust grid if RBAC/member links are rendered */
-.footer-inner:has(.member-gate-links) {
-  grid-template-columns: 2fr repeat(3, 1fr);
 }
 
 /* ─── 2. Branding Column ─── */
@@ -40,7 +35,7 @@
 
 .footer-subtitle {
   color: var(--footer-text);
-  font-size: 12px;
+  font-size: 13px;
   font-style: normal;
   line-height: 1.6;
   opacity: 0.85;
@@ -82,12 +77,29 @@
   display: block;
   font-size: 14px;
   opacity: 0.85;
+  text-decoration: none;
   transition: all var(--transition-smooth, 0.2s ease);
 }
 
 .footer-links a:hover {
   color: #ffffff;
   opacity: 1;
+}
+
+/* Admin Dashboard Subtle Link Styling */
+.footer-admin-link {
+  align-items: center;
+  color: var(--brand-accent) !important;
+  display: inline-flex !important;
+  font-size: 13px !important;
+  gap: 6px;
+  margin-top: 8px;
+  opacity: 0.8 !important;
+}
+
+.footer-admin-link:hover {
+  color: #ffffff !important;
+  opacity: 1 !important;
 }
 
 /* ─── 4. Responsive Layout ─── */

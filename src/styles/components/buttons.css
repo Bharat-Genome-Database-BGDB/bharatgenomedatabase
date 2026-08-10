@@ -6,7 +6,7 @@
 .btn-solid,
 .submit-btn {
   align-items: center;
-  border-radius: 8px;
+  border-radius: var(--border-radius-bento, 8px);
   cursor: pointer;
   display: inline-flex;
   font-family: var(--font-sans);
@@ -46,7 +46,7 @@
 .submit-btn:hover {
   background-color: var(--btn-bg-primary-hover);
   border-color: var(--btn-bg-primary-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
   color: var(--btn-text-primary, #ffffff);
   transform: translateY(-2px);
 }
@@ -55,13 +55,13 @@
 .btn-accent {
   background-color: var(--brand-accent);
   border: 1px solid var(--brand-accent);
-  color: #ffffff;
+  color: var(--slate-dark, #0f172a);
 }
 
 .btn-accent:hover {
   background-color: var(--brand-accent-hover);
   border-color: var(--brand-accent-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
   color: #ffffff;
   transform: translateY(-2px);
 }

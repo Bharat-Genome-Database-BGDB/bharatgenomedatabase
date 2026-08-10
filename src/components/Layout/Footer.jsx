@@ -1,4 +1,3 @@
-// src/components/Layout/Footer.jsx
 'use client';
 
 import { useState, useEffect } from "react";
@@ -8,7 +7,7 @@ import "@styles/footer.css";
 
 /**
  * @component Footer
- * @description Master multi-column template footer styling utilizing deep plum layouts matching original FAQ specifications.
+ * @description Master multi-column footer component for Bharat Genome Database (BGDB).
  */
 const Footer = () => {
   const [userRole, setUserRole] = useState("public");
@@ -44,6 +43,7 @@ const Footer = () => {
   }, []);
 
   const currentYear = new Date().getFullYear();
+  const isAdminUser = ["admin", "superadmin", "curator"].includes(userRole);
 
   return (
     <footer className="site-footer">
@@ -52,24 +52,35 @@ const Footer = () => {
         {/* Column 1: Core Branding Block */}
         <div className="footer-brand">
           <div>
-            <strong className="footer-brand-title">GenAI Research Labs</strong>
+            <strong className="footer-brand-title">Bharat Genome Database</strong>
             <br />
-            <span className="footer-subtitle">Advancing the frontier of biology through artificial intelligence, transparency, and collaboration.</span>
+            <span className="footer-subtitle">
+              India's open genomic knowledge repository and bio-computational research engine.
+            </span>
           </div>
           <address className="footer-address">
-            Kowdiar, Thiruvananthapuram, 
-            Kerala, India
+            Kowdiar, Thiruvananthapuram, Kerala, India
           </address>
           <p className="footer-copyright">
-            © 2026 GenAI Research Labs • Sivasakthi Science Foundation
+            © {currentYear} Bharat Genome Database • Sivasakthi Science Foundation
           </p>
         </div>
 
-        {/* Column 2: Engagement & Utilities */}
+        {/* Column 2: Catalogs & Research */}
         <div className="footer-links">
-          <h4>Engage</h4>
+          <h4>Resources</h4>
           <Link href="/faq">Frequently Asked Questions</Link>
           <Link href="/privacy">Privacy & Terms</Link>
+          {isAdminUser && (
+            <a 
+              href="https://sivasakthifoundation.org/admin/dashboard" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="footer-admin-link"
+            >
+              Admin Portal <i className="fas fa-external-link-alt"></i>
+            </a>
+          )}
         </div>
 
       </div>

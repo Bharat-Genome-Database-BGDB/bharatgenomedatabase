@@ -8,14 +8,34 @@
   width: 100%;
 }
 
+/* Modifiers for tinted or section heroes */
+.hero-tinted {
+  background-color: var(--brand-surface-subtle, #e4effe);
+  border-bottom: 1px solid var(--bg-border, #cbd5e1);
+}
+
 .hero-content {
   margin: 0 auto;
   max-width: 800px;
 }
 
-/* ─── 2. Hero Typography ─── */
+/* ─── 2. Hero Typography & Badges ─── */
+.hero-badge {
+  background-color: var(--brand-surface-subtle, #e4effe);
+  border: 1px solid var(--bg-border, #cbd5e1);
+  border-radius: 20px;
+  color: var(--brand-primary, #7c3aed);
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  padding: 6px 16px;
+  text-transform: uppercase;
+}
+
 .hero-title {
-  color: var(--text-heading);
+  color: var(--text-heading, #0f172a);
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   line-height: 1.1;
@@ -23,7 +43,7 @@
 }
 
 .hero-tagline {
-  color: var(--text-main);
+  color: var(--text-main, #334155);
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0 auto;

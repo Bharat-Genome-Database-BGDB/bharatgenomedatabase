@@ -7,12 +7,12 @@ import Footer from "./Footer";
 /**
  * @component Layout
  * @description Master framework template wrapper handling dynamic document titles, 
- * meta descriptions, cache-busting favicon linking, and rendering the global Header and Footer shell.
+ * meta descriptions, cache-busting favicon linking, and rendering the global Header and Footer shell for BGDB.
  */
 export default function Layout({ title, description, children }) {
 
   useEffect(() => {
-    const baseBranding = "GenAI Research Labs";
+    const baseBranding = "Bharat Genome Database";
 
     // 1. Handle Dynamic Breadcrumb Document Titles
     if (!title || title.toLowerCase() === "home") {
@@ -45,7 +45,7 @@ export default function Layout({ title, description, children }) {
   return (
     <>
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   );

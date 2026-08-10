@@ -29,7 +29,7 @@
 
 .section-highlight {
   background-color: var(--bg-section);
-  border-radius: 16px;
+  border-radius: var(--border-radius-bento, 16px);
   margin-top: 48px;
   padding: 48px;
   text-align: center;
@@ -43,7 +43,7 @@
 
 .story-callout {
   background-color: var(--brand-surface-subtle);
-  border-left: 4px solid var(--brand-accent);
+  border-left: 4px solid var(--brand-primary);
   border-radius: var(--border-radius-bento, 12px);
   padding: 32px;
 }

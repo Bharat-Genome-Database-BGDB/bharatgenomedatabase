@@ -27,7 +27,7 @@
 .form-group textarea {
   background-color: var(--form-input-bg, #ffffff);
   border: 1px solid var(--form-input-border, var(--bg-border));
-  border-radius: 12px;
+  border-radius: var(--border-radius-bento, 12px);
   color: var(--text-main);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -40,7 +40,7 @@
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--form-focus-ring);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
   outline: none;
 }
 

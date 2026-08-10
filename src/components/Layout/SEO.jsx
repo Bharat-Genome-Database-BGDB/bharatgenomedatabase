@@ -4,27 +4,27 @@ import Head from 'next/head';
 
 /**
  * @component SEO
- * @description Standardized SEO component for the Sivasakthi ecosystem.
- * Follows the POT "Shift-Left" philosophy by locking in brand integrity.
+ * @description Standardized SEO component for Bharat Genome Database (BGDB).
+ * Locks in brand metadata and social preview cards across all routes.
  * @param {string} title - Page-specific title
  * @param {string} description - Meta description
  * @param {string} keywords - Array of keyword strings
  * @param {string} image - Path to the social sharing image
  */
 const SEO = ({ title, description, keywords, image }) => {
-  // --- PROJECT-SPECIFIC BRANDING (Update manually after cloning) ---
-  const brandName = 'Sivasakthi Science Foundation™';
-  const titleSuffix = ' | Sivasakthi Science Foundation™';
-  const siteUrl = 'https://www.sivasakthifoundation.org';
-  const defaultImage = '/images/global/Seo_ssf.png';
+  // --- PROJECT-SPECIFIC BRANDING (BGDB Configuration) ---
+  const brandName = 'Bharat Genome Database™';
+  const titleSuffix = ' | Bharat Genome Database™';
+  const siteUrl = 'https://bharatgenomedatabase.org';
+  const defaultImage = '/images/global/Seo_bgdb.png';
   
   // --- LOGIC ---
   const pageTitle = title 
     ? `${title}${titleSuffix}` 
     : brandName;
 
-  const pageDescription = description || 'Advancing Research, Training & Education in Genomics and AI.';
-  const pageKeywords = keywords?.join(', ') || 'Genomics, Bharat Genome Database, AI, Research, India';
+  const pageDescription = description || 'India\'s National Genomic Data Repository and Bio-computational Research Platform.';
+  const pageKeywords = keywords?.join(', ') || 'Bharat Genome Database, BGDB, Genomics, FASTA, Bio-computational Pipelines, JBrowse, India';
   const pageImage = image || `${siteUrl}${defaultImage}`;
 
   return (

@@ -4,7 +4,7 @@
 .card {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-left: 2px solid var(--card-border-accent);
+  border-left: 3px solid var(--card-border-accent);
   border-radius: var(--border-radius-bento, 12px);
   box-shadow: var(--card-shadow);
   display: flex;
@@ -16,14 +16,14 @@
 
 .card:hover {
   border-color: var(--card-border-accent);
-  border-left-width: 4px;
-  box-shadow: var(--card-shadow-hover);
+  border-left-width: 5px;
+  box-shadow: var(--card-shadow-hover, 0 8px 24px rgba(124, 58, 237, 0.12));
   transform: translateY(-4px);
 }
 
 /* Card Typography Helpers */
 .card-subtitle {
-  color: var(--brand-accent);
+  color: var(--brand-primary);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -49,7 +49,7 @@
 .badge {
   background-color: var(--brand-surface-subtle);
   border-radius: 20px;
-  color: var(--brand-accent);
+  color: var(--brand-primary);
   display: inline-block;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -115,7 +115,7 @@
 }
 
 .faq-card:hover {
-  box-shadow: var(--card-shadow-hover);
+  box-shadow: var(--card-shadow-hover, 0 8px 24px rgba(124, 58, 237, 0.12));
   transform: translateY(-2px);
 }
 

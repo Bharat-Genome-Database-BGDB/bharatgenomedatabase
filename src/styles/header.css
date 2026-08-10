@@ -48,6 +48,15 @@
   opacity: 1;
 }
 
+/* Active ecosystem indicator for top-bar */
+.nav-item-link.ecosystem-active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  font-weight: 700;
+  opacity: 1;
+  padding: 2px 8px;
+}
+
 .nav-wrapper-item {
   align-items: center;
   color: #ffffff;
@@ -63,10 +72,10 @@
 }
 
 .separator {
-  color: var(--brand-accent);
-  font-size: 16px;
-  margin: 0 8px;
-  opacity: 0.6;
+  color: #ffffff;
+  font-size: 14px;
+  margin: 0 4px;
+  opacity: 0.4;
 }
 
 /* ─── 3. Branding & Main Navigation ─── */
@@ -144,7 +153,8 @@
 
 .nav-link-item:hover,
 .nav-link-item.active {
-  color: var(--brand-accent);
+  color: var(--brand-primary);
+  font-weight: 600;
 }
 
 /* ─── 4. Dropdowns ─── */
@@ -178,7 +188,7 @@
 
 .dropdown-link-item:hover {
   background-color: var(--brand-surface-subtle);
-  color: var(--brand-accent);
+  color: var(--brand-primary);
 }
 
 /* ─── 5. Mobile Controls ─── */

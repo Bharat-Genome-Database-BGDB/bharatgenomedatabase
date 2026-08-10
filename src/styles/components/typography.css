@@ -32,13 +32,14 @@ h4 {
 
 /* ─── 2. Links & Inline Navigation ─── */
 a {
-  color: var(--brand-accent);
+  color: var(--brand-primary);
   text-decoration: none;
-  transition: opacity var(--transition-smooth, 0.2s ease);
+  transition: color var(--transition-smooth, 0.2s ease);
 }
 
 a:hover {
-  opacity: 0.8;
+  color: var(--brand-primary-hover);
+  text-decoration: underline;
 }
 
 /* ─── 3. Standard Lists ─── */
@@ -69,7 +70,8 @@ li {
 /* ─── 5. Special Callouts & Footer Notes ─── */
 .footer-note {
   background-color: var(--brand-surface-subtle);
-  border-radius: 12px;
+  border: 1px solid var(--bg-border);
+  border-radius: var(--border-radius-bento, 12px);
   font-size: 0.95rem;
   line-height: 1.8;
   margin: 60px auto 0 auto;

@@ -7,7 +7,7 @@ import "@styles/header.css";
 
 /**
  * @component Header
- * @description The Master Double-Header Navigation for GenAI Research Labs.
+ * @description The Master Double-Header Navigation for Bharat Genome Database (BGDB).
  */
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,11 +16,12 @@ const Header = () => {
   const pathname = usePathname();
   const menuRef = useRef();
 
-  // --- Master Navigation Configuration ---
+  // --- BGDB Master Navigation Configuration ---
   const navLinks = [
     { label: "About Us", to: "/about" },
-    { label: "Software & Pipelines", to: "/software" },
-    { label: "Databases", to: "/databases" },
+    { label: "Genomic Catalogs", to: "/catalogs" },
+    { label: "Tools & Pipelines", to: "/tools" },
+    { label: "ODOG Initiative", to: "/odog" },
     { label: "Academics", to: "/academics" },
     { label: "Contact Us", to: "/contact" }
   ];
@@ -28,7 +29,7 @@ const Header = () => {
   const SSF_ECOSYSTEM = [
     { name: "SSF", url: "https://www.sivasakthifoundation.org" },
     { name: "GenAI", url: "https://genairesearch.org" },
-    { name: "BGDB", url: "https://bharatgenomedatabase.org" },
+    { name: "BGDB", url: "https://bharatgenomedatabase.org", active: true },
     { name: "AarogyaSakthi", url: "https://aarogyasakthi.com" },
   ];
 
@@ -46,7 +47,12 @@ const Header = () => {
             <nav className="top-bar-ecosystem">
               {SSF_ECOSYSTEM.map((site, index) => (
                 <div key={site.name} className="nav-wrapper-item">
-                  <a href={site.url} target="_blank" rel="noopener noreferrer" className="nav-item-link">
+                  <a
+                    href={site.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`nav-item-link ${site.active ? 'ecosystem-active' : ''}`}
+                  >
                     {site.name}
                   </a>
                   {index < SSF_ECOSYSTEM.length - 1 && <span className="separator">|</span>}
@@ -55,16 +61,16 @@ const Header = () => {
             </nav>
           </div>
           <div className="top-bar-socials">
-            <a href="https://www.linkedin.com/company/sivasakthi-science-foundation" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://www.linkedin.com/company/sivasakthi-science-foundation" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://x.com/SSF_handle" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://x.com/SSF_handle" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="https://www.youtube.com/@SivasakthiScienceFoundation" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://www.youtube.com/@SivasakthiScienceFoundation" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="YouTube">
               <i className="fab fa-youtube"></i>
             </a>
-            <a href="https://www.instagram.com/sivasakthiscience/" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://www.instagram.com/sivasakthiscience/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
           </div>
@@ -75,10 +81,10 @@ const Header = () => {
       <div className="main-nav-container">
         <div className="nav-wrapper">
           <Link href="/" className="header__brand">
-            <img src="/images/global/Logo.png" alt="GenAI Research Labs Logo" className="brand-logo" />
+            <img src="/images/global/Logo.png" alt="Bharat Genome Database Logo" className="brand-logo" />
             <div className="brand-text">
-              <h1 className="brand-title">GenAI Research Labs</h1>
-              <p className="brand-tagline">AI + Genomics Research Core</p>
+              <h1 className="brand-title">Bharat Genome Database</h1>
+              <p className="brand-tagline">National Genomic Data Repository</p>
             </div>
           </Link>
 
