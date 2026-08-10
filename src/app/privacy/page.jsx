@@ -1,65 +1,80 @@
 'use client';
 
-import Layout from '@layout/Layout';
+import Layout from '@components/Layout/Layout';
 import "@styles/main.css";
 
+/**
+ * @component PrivacyPage
+ * @description Privacy & Terms of Usage page for Bharat Genome Database (BGDB).
+ */
 export default function PrivacyPage() {
   return (
     <Layout 
-      title="Data Privacy & Computational Terms | GenAI Research Labs" 
-      description="Review our model governance standards and institutional multi-omics data protocols before interfacing with our research engines."
+      title="Data Privacy & Terms of Usage" 
+      description="Review our data governance standards, open-access genomic parameters, and repository security protocols for the Bharat Genome Database."
     >
-      <main className="container py-xl">
+      <main className="container" style={{ paddingTop: '40px' }}>
         {/* ─── HERO SECTION ─── */}
-        <header className="hero mb-lg">
-          <span className="badge mb-md">Governance & Compliance</span>
-          <h1 className="hero-title">Data Privacy & Computational Terms</h1>
-          <p className="hero-tagline">
-            Please read our model governance standards and institutional multi-omics data protocols before interfacing with our research engines.
-          </p>
+        <header className="hero hero-tinted mb-lg" style={{ borderRadius: 'var(--border-radius-bento, 12px)' }}>
+          <div className="hero-content">
+            <span className="hero-badge">Governance & Policy</span>
+            <h1 className="hero-title">Data Privacy & Terms of Usage</h1>
+            <p className="hero-tagline">
+              Please review our national genomic data standards, repository access parameters, and open-science attribution guidelines.
+            </p>
+          </div>
         </header>
 
-        <article className="section-stack">
+        <article className="section-stack" style={{ marginTop: '40px' }}>
           {/* Metadata Date */}
-          <div className="text-muted text-small mb-md" style={{ fontWeight: 500 }}>
-            Last Updated: May 2026
+          <div className="text-small" style={{ color: 'var(--text-muted)', fontWeight: 500, marginBottom: '16px' }}>
+            Last Updated: August 2026
           </div>
 
           {/* Section 1 */}
-          <section className="card p-xl">
-            <h2 className="card-title">1. Terms of Computational Usage</h2>
+          <section className="card">
+            <h2 className="card-title">1. Terms of Database Usage</h2>
             <p className="card-body">
-              By accessing our web endpoints, model documentation, and API prototypes, you agree to comply with and be bound by the following research parameters. The content provided on this platform spans deep learning architectures, computational multi-omics benchmarks, and algorithmic research outputs for peer validation and collaborative exploration.
+              By accessing the <strong>Bharat Genome Database (BGDB)</strong>, querying species catalogs, downloading FASTA/GFF3 sequence files, or embedding interactive JBrowse map tracks, you agree to comply with our research and data usage protocols. BGDB serves as an open-access national repository designed to advance comparative genomics and preserve regional biodiversity records.
             </p>
             <p className="card-body" style={{ marginTop: '16px' }}>
-              Unauthorized exploitation of our infrastructure, including automated scraping of active server endpoints, launching model denial-of-service (DoS) payloads, or modifying our core Next.js/Python frameworks outside of their designated license wrappers, is strictly prohibited.
+              Unauthorized exploitation of database infrastructure—including aggressive server scraping, automated denial-of-service (DoS) query flooding, or attempting to bypass role-gated API endpoints—is strictly prohibited.
             </p>
           </section>
 
           {/* Section 2 */}
-          <section className="card p-xl">
-            <h2 className="card-title">2. Multi-Omics Data Protection & Model Safety</h2>
-            <p className="card-body mb-md">
-              GenAI Research Labs prioritizes stringency when processing raw or intermediate biological data:
+          <section className="card">
+            <h2 className="card-title">2. Sequence Data Protection & Query Security</h2>
+            <p className="card-body" style={{ marginBottom: '16px' }}>
+              BGDB prioritizes strict integrity and security when handling sequence submissions and computational queries:
             </p>
-            <ul className="card-list mb-md">
-              <li><strong>Non-Retention of Query Inputs:</strong> We do not log or persistently store unencrypted FASTA, FASTQ, structural PDB files, or user sequence queries submitted to public demonstration endpoints.</li>
-              <li><strong>Isolated Ephemeral Memory:</strong> Sequences parsed through model demos run inside isolated, volatile memory buffers and are cleared immediately post-inference.</li>
-              <li><strong>Zero Third-Party Training:</strong> Submitted research payloads are never harvested to fine-tune third-party commercial LLMs or external AI foundation models.</li>
+            <ul className="card-list" style={{ gridTemplateColumns: '1fr', marginBottom: '16px' }}>
+              <li>
+                <i className="fas fa-shield-alt" style={{ color: 'var(--brand-primary)', marginRight: '8px' }}></i>
+                <strong>Non-Retention of Search Queries:</strong> Unencrypted sequence queries processed through web BLAST tools or search forms are cleared from volatile server memory immediately post-alignment.
+              </li>
+              <li>
+                <i className="fas fa-lock" style={{ color: 'var(--brand-primary)', marginRight: '8px' }}></i>
+                <strong>Gated Research Submissions:</strong> Pre-publication genomic assemblies submitted by partner institutions are protected with strict Row-Level Security (RLS) until authorized for public indexing.
+              </li>
+              <li>
+                <i className="fas fa-user-shield" style={{ color: 'var(--brand-primary)', marginRight: '8px' }}></i>
+                <strong>Zero Commercial Harvesting:</strong> User contact records, institutional affiliations, and research inquiry details are never sold, rented, or distributed to third-party commercial entities.
+              </li>
             </ul>
             <p className="card-body">
-              We maintain absolute isolation boundaries between separate research groups. We do not rent, trade, or distribute pipeline metadata, intellectual summaries, or contact databases to outside corporate entities.
+              We maintain clear data isolation standards to safeguard institutional research projects and proprietary species annotations prior to formal open-access release.
             </p>
           </section>
 
           {/* Section 3 */}
-          <section className="card p-xl">
-            <h2 className="card-title">3. Intellectual Property, Model Weights & Open Science</h2>
+          <section className="card">
+            <h2 className="card-title">3. Intellectual Property, Open Science & Citations</h2>
             <p className="card-body">
-              Our production platforms, custom sequence visualization engines, and underlying pipeline orchestration systems are protected properties of GenAI Research Labs.
+              The underlying web architecture, custom visualization components, and database infrastructure are maintained under the Sivasakthi Science Foundation ecosystem.
             </p>
             <p className="card-body" style={{ marginTop: '16px' }}>
-              However, in adherence to our open-science ethos, public research weights, pre-trained transformer checkpoints, and benchmarking utilities are actively open-sourced under permissive academic frameworks (e.g., Apache 2.0 or MIT licenses) hosted on our official version-controlled repositories. Users reproducing or fine-tuning our open-access architectures must credit GenAI Research Labs and append the required documentation headers in compliance with those respective terms.
+              In accordance with our open-science mission, public genome assemblies, species taxonomy profiles, and computational annotation outputs (including the <em>One Species, One Genome - ODOG</em> initiative) are made available under permissive academic licenses. Researchers utilizing BGDB datasets in peer-reviewed publications, academic presentations, or commercial applications are requested to formally cite the Bharat Genome Database and maintain standard attribution headers.
             </p>
           </section>
         </article>

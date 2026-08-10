@@ -1,63 +1,104 @@
 'use client';
 
-import { useState } from "react";
+import Layout from "@components/Layout/Layout";
 import "@styles/main.css";
 
+/**
+ * @component FAQPage
+ * @description Frequently Asked Questions page for Bharat Genome Database (BGDB).
+ */
 export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState(null);
-
   const faqs = [
     {
-      q: "What is GenAI Research Labs?",
-      a: "GenAI Research Labs is an interdisciplinary computational research arm operating under the Sivasakthi Science Foundation umbrella. We focus explicitly on the intersection of deep learning and multi-omics, developing state-of-the-art machine learning models to decode complex biological sequences, accelerate structural biology pipelines, and optimize drug discovery."
+      q: "What is the Bharat Genome Database (BGDB)?",
+      a: "The Bharat Genome Database (BGDB) is an open-access national repository dedicated to centralizing, standardizing, and hosting comparative genomics, multi-species assemblies, and functional annotation datasets for species across the Indian subcontinent."
     },
     {
-      q: "How does GenAI Research Labs utilize machine learning in genomics?",
-      a: "We train and fine-tune specialized transformer architectures and deep convolutional networks on massive, curated multi-omics datasets. These neural networks are designed to capture complex spatial and evolutionary relationships within biological data, enabling tasks like variant pathogenicity prediction, structural protein modeling, and structural variations classification."
+      q: "What sequence file formats does BGDB support for download and analysis?",
+      a: "BGDB hosts and provides downloads for raw sequencing reads in FASTQ format, assembled nucleotide and amino acid sequences in FASTA format, gene structural annotations in GFF3/GTF formats, and variant call records in VCF format."
     },
     {
-      q: "What is the relationship between GenAI Research Labs and the Bharat Genome Database (BGDB)?",
-      a: "GenAI Research Labs serves as the core engineering and analytical backbone for the Bharat Genome Database. While BGDB functions as a highly secure, role-based genomic storage network and sequence visualization browser, our lab builds the deep learning pipelines that ingest, clean, and run downstream predictive modeling over those population-scale variant sets."
+      q: "What is the One Species, One Genome (ODOG) Initiative?",
+      a: "The ODOG Initiative is a flagship project aimed at sequencing, assembling, and annotating at least one high-quality reference genome for native Indian plant, animal, and microbial species to preserve regional biodiversity records and support bio-computational research."
     },
     {
-      q: "Are the models and datasets developed here open-source?",
-      a: "We are committed to open-source reproducibility. Our model weights, structural pipeline configurations, and utility training benchmarks are routinely deployed to GitHub for academic verification. However, institutional clinical trial pipelines and raw patient genomic data remains strictly protected using multi-tenant security layers."
+      q: "How can I inspect genome tracks interactively?",
+      a: "Researchers can utilize our integrated JBrowse 2 genome browser embedded directly within the database pages to interactively explore chromosome maps, gene predictions, variant density, and RNA-seq alignment tracks."
     },
     {
-      q: "How can academic institutes or clinical groups collaborate with the lab?",
-      a: "Research institutions can submit joint biological processing requests or deep learning project proposals through our computational intake channels. Collaborators often leverage our high-performance infrastructure to run specialized model evaluations, scale mutation processing pipelines, or collaborate on structural biology papers."
+      q: "Does BGDB provide sequence similarity search tools like BLAST?",
+      a: "Yes. BGDB offers a web-based BLAST alignment server allowing users to query custom nucleotide or protein sequences against our curated database of native Indian species and reference assemblies."
     },
     {
-      q: "What training pathways are available for researchers and interns?",
-      a: "We host intensive computational genomics bootcamps, master's thesis mentorship programs, and postdoctoral fellowships. Selected participants interface directly with our model pipelines, learning to manage high-throughput deep learning training loops, handle massive sequence alignment indices, and engineer performant bioinformatics data loaders."
+      q: "How does role-based access control (RBAC) work on BGDB?",
+      a: "High-level taxonomy catalogs and reference assemblies are publicly accessible. However, raw sequence downloads, high-throughput pipeline execution endpoints, and pre-publication research datasets require an authenticated user role (Student, Researcher, or Admin)."
+    },
+    {
+      q: "How can independent researchers or labs submit sequence data to BGDB?",
+      a: "Labs can submit raw FASTQ reads or curated FASTA/GFF3 assemblies through our researcher portal or contact our curation team. Submitted data undergoes automated quality control checks before being indexed."
+    },
+    {
+      q: "Are datasets on BGDB open for commercial research and development?",
+      a: "Publicly released reference genomes and species annotations are made available under permissive open-science licenses. Commercial entities using BGDB records are required to adhere to our attribution and usage guidelines."
+    },
+    {
+      q: "Does BGDB provide automated genome annotation tools?",
+      a: "Yes. BGDB operates computational annotation pipelines that automatically predict gene boundaries, identify functional domains, and map orthologous gene clusters across multi-species datasets."
+    },
+    {
+      q: "How can students apply for bioinformatics fellowships or internships?",
+      a: "Students and graduates in computational biology, bioinformatics, and software engineering can apply for hands-on data curation and pipeline development fellowships through our Contact & Support page."
     }
   ];
 
   return (
-    <Layout title="FAQ" description="Frequently Asked Questions">
-      
-      <header className="hero-identity-group">
-        <h1 className="hero-main-title">Frequently Asked Questions</h1>
-        <p className="hero-sub-tagline">
-          Common inquiries regarding computational access, research partnerships, open-access databases, and academic fellowships.
-        </p>
-      </header>
+    <Layout 
+      title="Frequently Asked Questions" 
+      description="Find answers to common questions about sequence downloads, file formats, JBrowse 2 viewer, BLAST tools, and the ODOG initiative on Bharat Genome Database."
+    >
+      <main className="container" style={{ paddingTop: '40px' }}>
+        
+        {/* ─── HERO BANNER ─── */}
+        <header className="hero hero-tinted mb-lg" style={{ borderRadius: 'var(--border-radius-bento, 12px)' }}>
+          <div className="hero-content">
+            <span className="hero-badge">Knowledge Hub</span>
+            <h1 className="hero-title">Frequently Asked Questions</h1>
+            <p className="hero-tagline">
+              Common inquiries regarding genomic sequence downloads, file formats, JBrowse 2 viewer tracks, BLAST queries, and the ODOG initiative.
+            </p>
+          </div>
+        </header>
 
-      <div className="faq-list">
-        {faqs.map((faq, idx) => (
-          <article key={idx} className="card">
-            <h3 className="faq-question">
-              <i className="fas fa-question-circle"></i>
-              {faq.q}
-            </h3>
-            <div className="faq-answer">
-              <p className="body-text">{faq.a}</p>
-            </div>
-          </article>
-        ))}
-      </div>
+        {/* ─── FAQ LIST (Hover-Only Cards) ─── */}
+        <section className="section-stack" style={{ marginTop: '40px', maxWidth: '850px', marginInline: 'auto' }}>
+          {faqs.map((faq, idx) => (
+            <article 
+              key={idx} 
+              className="card faq-card"
+              style={{ padding: '28px 32px' }}
+            >
+              <h3 
+                className="card-title" 
+                style={{ 
+                  fontSize: '1.25rem', 
+                  marginBottom: '12px', 
+                  color: 'var(--text-heading)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px'
+                }}
+              >
+                <i className="fas fa-question-circle" style={{ color: 'var(--brand-primary)' }}></i>
+                {faq.q}
+              </h3>
+              <p className="card-body" style={{ margin: 0, fontSize: '0.95rem', lineHeight: '1.7' }}>
+                {faq.a}
+              </p>
+            </article>
+          ))}
+        </section>
 
+      </main>
     </Layout>
   );
-
 }
