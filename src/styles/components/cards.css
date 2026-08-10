@@ -12,15 +12,7 @@
   height: 100%;
   padding: 32px;
   transition: all var(--transition-smooth, 0.2s ease);
-}
-
-.card-body p,
-.card-body span {
-  text-align: left !important;
-  text-justify: none !important;
-  word-break: normal !important;
-  overflow-wrap: break-word !important;
-  hyphens: none !important;
+  min-width: 0; /* Prevents flex items from overflowing horizontally */
 }
 
 .card:hover {
@@ -30,7 +22,7 @@
   transform: translateY(-4px);
 }
 
-/* Card Typography Helpers */
+/* Card Typography & WYSIWYG Flow Helpers */
 .card-subtitle {
   color: var(--brand-primary);
   font-size: 0.8rem;
@@ -45,12 +37,26 @@
   font-family: var(--font-serif);
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
+  overflow-wrap: break-word;
 }
 
 .card-body {
   color: var(--text-main);
   flex-grow: 1;
+  font-size: 0.95rem;
   line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+/* Neutralize rich-text editor quirks (like Quill alignment/spacing bugs) */
+.card-body p,
+.card-body span,
+.card-body li,
+.card-body div {
+  text-align: left !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  hyphens: none !important;
 }
 
 /* ─── 2. Modifiers & Sub-Elements ─── */
@@ -83,6 +89,7 @@
   justify-content: center;
   margin-bottom: 20px;
   width: 50px;
+  flex-shrink: 0;
 }
 
 .card-list {
@@ -100,6 +107,7 @@
   display: flex;
   font-size: 0.95rem;
   gap: 8px;
+  overflow-wrap: break-word;
 }
 
 /* ─── 3. Special Feature & Page Modifiers ─── */
@@ -212,4 +220,106 @@
     gap: 48px;
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* Catalog */
+/* Catalog & Dynamic Card Specific Modifiers */
+.catalog-card-shell {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.catalog-thumb-box {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-section);
+}
+
+.catalog-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-placeholder-box {
+  height: 120px;
+  width: 100%;
+  background-color: var(--brand-surface-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.catalog-card-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.catalog-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.catalog-tier-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ─── Catalog Alphabet Jump Bar Component Styles ─── */
+.catalog-jump-bar-card {
+  align-items: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-bento, 12px);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2rem;
+  padding: 20px 24px;
+}
+
+.catalog-jump-label {
+  color: var(--brand-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-right: 12px;
+  text-transform: uppercase;
+}
+
+.catalog-jump-pill {
+  align-items: center;
+  background-color: var(--brand-surface-subtle);
+  border: 1px solid var(--bg-border);
+  border-radius: 6px;
+  color: var(--brand-primary);
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  height: 36px;
+  justify-content: center;
+  text-decoration: none;
+  transition: all var(--transition-smooth, 0.2s ease);
+  width: 36px;
+}
+
+.catalog-jump-pill:hover {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
 }

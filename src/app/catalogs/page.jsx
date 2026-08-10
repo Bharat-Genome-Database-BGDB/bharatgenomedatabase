@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { supabase } from '@db/supabaseClient';
 import Layout from '@components/Layout/Layout';
 import '@styles/main.css';
-import '@styles/catalog.css';
 
 export default function CatalogsPage() {
   const [speciesList, setSpeciesList] = useState([]);
@@ -57,28 +56,28 @@ export default function CatalogsPage() {
 
   return (
     <Layout>
-      <div className="content-wrapper catalog-wrapper">
-        
+      <div className="container section-stack">
+
         {/* Page Header Section */}
-        <div className="catalog-hero-section">
-          <h1 className="hero-title catalog-hero-title">
+        <div className="hero-section text-center">
+          <h1 className="hero-title">
             Species Genome Catalog
           </h1>
-          <p className="catalog-hero-subtitle">
+          <p className="card-body margin-auto max-w-700">
             Explore sequenced flora, fauna, and microbial genomes cataloged across the Bharat Genome Database. Browse alphabetically or search live records.
           </p>
         </div>
 
-        {/* Search & Filter Section */}
-        <div className="card catalog-search-card">
-          <div className="catalog-search-group">
-            <label htmlFor="catalog_search" className="catalog-search-label">
+        {/* Search & Filter Card */}
+        <div className="card catalog-search-wrap">
+          <div className="form-group">
+            <label htmlFor="catalog_search">
               Filter Catalog Contents:
             </label>
             <input
               id="catalog_search"
               type="text"
-              className="catalog-search-input"
+              className="form-group input"
               placeholder="🔍 Search by common name (e.g., Mango), scientific name (e.g., Mangifera), or family..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -88,7 +87,7 @@ export default function CatalogsPage() {
 
         {/* Quick-Jump Alphabet Anchor Bar */}
         {!loading && activeAlphabetKeys.length > 0 && (
-          <div className="catalog-jump-bar">
+          <div className="catalog-jump-bar-card">
             <span className="catalog-jump-label">
               Jump to:
             </span>
@@ -106,90 +105,89 @@ export default function CatalogsPage() {
 
         {/* Loading & Error States */}
         {loading && (
-          <div style={{ textAlign: 'center', padding: '4rem 0', color: '#64748b', fontSize: '1.1rem' }}>
+          <div className="text-center" style={{ padding: '4rem 0', color: 'var(--ink-muted)', fontSize: '1.1rem' }}>
             ⏳ Loading species catalog from database...
           </div>
         )}
 
         {errorMessage && (
-          <div style={{ textAlign: 'center', padding: '2rem', color: '#dc2626', background: '#ffeeec', borderRadius: '8px' }}>
+          <div className="text-center" style={{ padding: '2rem', color: '#dc2626', background: '#ffeeec', borderRadius: '8px' }}>
             {errorMessage}
           </div>
         )}
 
         {!loading && activeAlphabetKeys.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '4rem 0', color: '#64748b' }}>
-            <h3>No species found matching your search criteria.</h3>
-            <p>Try clearing your search filter to view all available entries.</p>
+          <div className="card text-center" style={{ padding: '4rem 2rem' }}>
+            <h3 className="card-title">No species found matching your search criteria.</h3>
+            <p style={{ color: 'var(--ink-muted)' }}>Try clearing your search filter to view all available entries.</p>
           </div>
         )}
 
         {/* Alphabet Sections List */}
         {!loading && activeAlphabetKeys.map((letter) => (
-          <div key={letter} id={`letter-${letter}`} className="catalog-letter-section">
-            
+          <div key={letter} id={`letter-${letter}`} className="section-stack">
+
             {/* Alphabet Section Heading */}
-            <div className="catalog-letter-header">
-              <h2 className="catalog-letter-title">
+            <div className="catalog-section-heading">
+              <h2 className="card-title" style={{ fontSize: '2rem', margin: 0, color: 'var(--brand-primary)' }}>
                 {letter}
               </h2>
-              <span className="catalog-letter-count">
+              <span style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', fontWeight: 600 }}>
                 ({groupedByAlphabet[letter].length} {groupedByAlphabet[letter].length === 1 ? 'species' : 'species'})
               </span>
             </div>
 
             {/* Species Grid for this Letter */}
-            <div className="catalog-species-grid">
+            <div className="grid grid-3">
               {groupedByAlphabet[letter].map((species) => (
-                <div key={species.id} className="card catalog-species-card">
-                  
+                <div key={species.id} className="card catalog-card-shell">
+
                   {species.cover_image_url ? (
-                    <div className="catalog-species-img-wrap">
-                      <img 
-                        src={species.cover_image_url} 
-                        alt={species.common_name} 
-                        className="catalog-species-img"
+                    <div className="catalog-thumb-box">
+                      <img
+                        src={species.cover_image_url}
+                        alt={species.common_name}
+                        className="catalog-thumb-img"
                       />
                     </div>
                   ) : (
-                    <div className="catalog-species-placeholder">
+                    <div className="catalog-placeholder-box">
                       🧬 {species.kingdom || 'Genomic Specimen'}
                     </div>
                   )}
 
-                  <div className="catalog-species-body">
+                  <div className="catalog-card-content">
                     <div>
-                      <div className="catalog-badge-row">
-                        <span className="catalog-kingdom-badge">
+                      <div className="catalog-card-header">
+                        <span className="badge">
                           {species.kingdom || 'Flora'}
                         </span>
                         {species.access_tier && (
-                          <span className="catalog-tier-label">
+                          <span className="catalog-tier-text">
                             Tier: {species.access_tier}
                           </span>
                         )}
                       </div>
 
-                      <h3 className="catalog-common-name">
+                      <h3 className="card-title" style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>
                         {species.common_name}
                       </h3>
 
-                      <p className="catalog-sci-name">
+                      <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--brand-primary)', fontSize: '1rem', marginBottom: '0.75rem' }}>
                         {species.scientific_name}
                       </p>
 
                       {species.family && (
-                        <p className="catalog-family-text">
+                        <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginBottom: '1.5rem' }}>
                           <strong>Family:</strong> {species.family}
                         </p>
                       )}
                     </div>
 
-                    <div className="catalog-card-footer">
+                    <div>
                       <Link
                         href={`/catalogs/${species.slug}`}
-                        className="btn-solid"
-                        style={{ display: 'block', textAlign: 'center', padding: '0.6rem 1rem', borderRadius: '8px', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem' }}
+                        className="btn-solid btn-full"
                       >
                         View Genome Record →
                       </Link>
