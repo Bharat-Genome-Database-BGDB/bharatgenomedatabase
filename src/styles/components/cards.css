@@ -113,13 +113,13 @@
 /* ─── 3. Special Feature & Page Modifiers ─── */
 
 /* Contact Page Layout */
-.contact-grid-layout {
+.grid-layout {
   display: grid;
   gap: 32px;
   grid-template-columns: 1fr;
 }
 
-.contact-sidebar {
+.card-sidebar {
   background-color: var(--brand-surface-subtle);
   border: none;
 }
@@ -216,7 +216,7 @@
 }
 
 @media (min-width: 1024px) {
-  .contact-grid-layout {
+  .grid-layout {
     gap: 48px;
     grid-template-columns: 1fr 1fr;
   }

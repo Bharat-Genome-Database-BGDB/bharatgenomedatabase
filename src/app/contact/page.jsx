@@ -52,7 +52,7 @@ export default function ContactPage() {
       description="Get in touch with Bharat Genome Database for data access, internship applications, and research collaborations."
     >
       <main className="container" style={{ paddingTop: '40px' }}>
-        <header className="hero hero-tinted mb-lg" style={{ borderRadius: 'var(--border-radius-bento, 12px)' }}>
+        <header className="hero hero-tinted">
           <div className="hero-content">
             <span className="hero-badge">Get In Touch</span>
             <h1 className="hero-title">Contact & Collaborations</h1>
@@ -62,10 +62,10 @@ export default function ContactPage() {
           </div>
         </header>
 
-        <section className="contact-grid-layout" style={{ marginTop: '40px' }}>
+        <section className="grid-layout" style={{ marginTop: '40px' }}>
           {/* Left Column: Context Channels */}
           <div className="section-stack">
-            <div className="card contact-sidebar">
+            <div className="card card-sidebar">
               <div className="icon-box"><i className="fas fa-database"></i></div>
               <h3 className="card-title">Database Headquarters</h3>
               <p className="card-body">
@@ -75,7 +75,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="card contact-sidebar">
+            <div className="card card-sidebar">
               <div className="icon-box"><i className="fas fa-dna"></i></div>
               <h3 className="card-title">Data Access & Submissions</h3>
               <p className="card-body">
@@ -83,7 +83,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="card contact-sidebar">
+            <div className="card card-sidebar">
               <div className="icon-box"><i className="fas fa-graduation-cap"></i></div>
               <h3 className="card-title">Internships & Academic Intake</h3>
               <p className="card-body">
