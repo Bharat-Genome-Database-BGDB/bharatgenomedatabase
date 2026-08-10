@@ -1,0 +1,80 @@
+/* src/styles/variables.scss - Bharat Genome Database (BGDB) Classic Theme Tokens */
+
+// 🎨 SCSS Palette Variables
+$bgdb-purple: #7c3aed;          // Primary Academic Purple
+$bgdb-purple-hover: #6d28d9;    // Purple Primary Hover
+$bgdb-purple-dark: #4c1d95;     // Deep Royal Purple Accent
+$bgdb-lilac: #a78bfa;          // Light Purple Accent
+$bgdb-ice-blue: #e4effe;        // Soft Ice Blue Tint Canvas
+
+$slate-dark: #0f172a;         // Dark Header & High-Contrast Ink
+$slate-mid: #334155;          // Medium Body Copy
+$slate-muted: #64748b;        // Muted Metadata & Subtitles
+$slate-border: #cbd5e1;       // Component Borders
+$slate-light: #f8fafc;        // Off-white Card Canvas
+$color-white: #ffffff;
+
+// 🖋 Typography & Structural Variables
+$font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+$font-serif: 'Cormorant Garamond', Georgia, serif;
+$border-radius-bento: 12px;
+$max-content-width: 1000px;
+$transition-smooth: 0.2s ease;
+
+:root {
+  /* ─── BRAND CORE LEGEND ─── */
+  --brand-primary: #7c3aed;
+  --brand-primary-hover: #6d28d9;
+  --brand-secondary: #4c1d95;
+  --brand-accent: #a78bfa;
+  --brand-accent-hover: #7c3aed;
+  --brand-surface-subtle: #e4effe;
+
+  /* ─── BACKGROUND & CANVAS ─── */
+  --bg-border: #cbd5e1;
+  --bg-canvas: #ffffff;
+  --bg-main: #ffffff;
+  --bg-section: #e4effe;       /* Soft Ice Blue Background */
+
+  /* ─── TYPOGRAPHY TOKENS ─── */
+  --ink-muted: #64748b;
+  --ink-primary: #0f172a;
+  --ink-secondary: #334155;
+  --text-heading: #0f172a;
+  --text-main: #334155;
+  --text-muted: #64748b;
+
+  /* ─── BUTTON COMPONENT TOKENS ─── */
+  --btn-bg-primary: #7c3aed;
+  --btn-bg-primary-hover: #6d28d9;
+  --btn-bg-secondary: #ffffff;
+  --btn-bg-secondary-hover: #e4effe;
+  --btn-border-secondary: #cbd5e1;
+  --btn-text-primary: #ffffff;
+  --btn-text-secondary: #0f172a;
+
+  /* ─── CARD COMPONENT TOKENS ─── */
+  --card-bg: #ffffff;
+  --card-border: #cbd5e1;
+  --card-border-accent: #7c3aed;
+  --card-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --card-shadow-hover: 0 8px 24px rgba(124, 58, 237, 0.15);
+
+  /* ─── FORM COMPONENT TOKENS ─── */
+  --form-focus-ring: #7c3aed;
+  --form-input-bg: #ffffff;
+  --form-input-border: #cbd5e1;
+
+  /* ─── NAVIGATION & FOOTER ─── */
+  --footer-bg: #0f172a;
+  --footer-text: #f8fafc;
+  --header-bg: #ffffff;
+  --header-border: #cbd5e1;
+
+  /* ─── TYPOGRAPHY & LAYOUT STANDARDS ─── */
+  --border-radius-bento: 12px;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --max-content-width: 1000px;
+  --transition-smooth: 0.2s ease;
+}

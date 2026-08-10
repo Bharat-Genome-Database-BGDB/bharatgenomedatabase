@@ -1,0 +1,98 @@
+/* src/styles/footer.css - Universal Footer Component Styles */
+
+/* ─── 1. Shell ─── */
+.site-footer {
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--bg-border);
+  color: var(--footer-text);
+  font-family: var(--font-sans);
+  padding: 60px 24px 40px;
+  width: 100%;
+}
+
+.footer-inner {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 2fr repeat(2, 1fr);
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Adjust grid if RBAC/member links are rendered */
+.footer-inner:has(.member-gate-links) {
+  grid-template-columns: 2fr repeat(3, 1fr);
+}
+
+/* ─── 2. Branding Column ─── */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-brand-title {
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.footer-subtitle {
+  color: var(--footer-text);
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.footer-address {
+  color: var(--footer-text);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.footer-copyright {
+  color: var(--footer-text);
+  font-size: 12px;
+  margin-top: 8px;
+  opacity: 0.6;
+}
+
+/* ─── 3. Link Blocks ─── */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links h4 {
+  color: var(--brand-accent);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+}
+
+.footer-links a {
+  color: var(--footer-text);
+  display: block;
+  font-size: 14px;
+  opacity: 0.85;
+  transition: all var(--transition-smooth, 0.2s ease);
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* ─── 4. Responsive Layout ─── */
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,225 @@
+/* src/styles/header.css - Universal Header Component Styles */
+
+/* ─── 1. Global Shell ─── */
+.site-header {
+  background-color: var(--header-bg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-family: var(--font-sans);
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* ─── 2. Top Bar Ecosystem ─── */
+.top-bar {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 24px;
+}
+
+.top-bar-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.top-bar-ecosystem,
+.top-bar-socials {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+.nav-item-link,
+.social-link {
+  color: #ffffff;
+  font-size: 14px;
+  opacity: 0.85;
+  text-decoration: none;
+  transition: all var(--transition-smooth, 0.2s ease);
+}
+
+.nav-item-link:hover,
+.social-link:hover {
+  opacity: 1;
+}
+
+.nav-wrapper-item {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.85;
+  transition: opacity var(--transition-smooth, 0.2s ease);
+}
+
+.nav-wrapper-item:hover {
+  opacity: 1;
+}
+
+.separator {
+  color: var(--brand-accent);
+  font-size: 16px;
+  margin: 0 8px;
+  opacity: 0.6;
+}
+
+/* ─── 3. Branding & Main Navigation ─── */
+.main-nav-container {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  padding: 12px 24px;
+}
+
+.nav-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.header__brand {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  text-decoration: none;
+  transition: transform var(--transition-smooth, 0.2s ease);
+}
+
+.header__brand:hover {
+  transform: scale(1.02);
+}
+
+.brand-logo {
+  height: 48px;
+  width: auto;
+}
+
+.brand-title {
+  color: var(--text-heading);
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.brand-tagline {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.nav-list {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link-item {
+  align-items: center;
+  color: var(--text-heading);
+  display: flex;
+  font-size: 15px;
+  font-weight: 500;
+  gap: 6px;
+  padding: 8px 4px;
+  text-decoration: none;
+  transition: color var(--transition-smooth, 0.2s ease);
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+  color: var(--brand-accent);
+}
+
+/* ─── 4. Dropdowns ─── */
+.dropdown-menu {
+  background-color: var(--header-bg);
+  border: 1px solid var(--header-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: none;
+  left: 0;
+  list-style: none;
+  margin-top: 8px;
+  min-width: 220px;
+  padding: 8px 0;
+  position: absolute;
+  top: 100%;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-link-item {
+  color: var(--text-main);
+  display: block;
+  font-size: 14px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: all var(--transition-smooth, 0.2s ease);
+}
+
+.dropdown-link-item:hover {
+  background-color: var(--brand-surface-subtle);
+  color: var(--brand-accent);
+}
+
+/* ─── 5. Mobile Controls ─── */
+.mobile-nav-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+.hamburger-bar {
+  background-color: var(--text-heading);
+  height: 2px;
+  margin: 4px 0;
+  width: 24px;
+}
+
+/* ─── 6. Responsive Breakpoints ─── */
+@media (max-width: 992px) {
+  .mobile-nav-toggle {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-menu {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    display: none;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+  }
+
+  .nav-menu.open {
+    display: block;
+  }
+
+  .nav-list {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,95 @@
+/* src/styles/components/buttons.css - Universal Button Component Styles */
+
+/* ─── 1. Base Shared Button Rules ─── */
+.btn-accent,
+.btn-outline,
+.btn-solid,
+.submit-btn {
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all var(--transition-smooth, 0.2s ease);
+}
+
+.btn-accent:focus-visible,
+.btn-outline:focus-visible,
+.btn-solid:focus-visible,
+.submit-btn:focus-visible {
+  outline: 2px solid var(--form-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Helper class for full-width buttons inside forms/containers */
+.btn-full,
+.submit-btn {
+  width: 100%;
+}
+
+/* ─── 2. Primary Solid Button ─── */
+.btn-solid,
+.submit-btn {
+  background-color: var(--btn-bg-primary);
+  border: 1px solid var(--btn-bg-primary);
+  color: var(--btn-text-primary, #ffffff);
+}
+
+.btn-solid:hover,
+.submit-btn:hover {
+  background-color: var(--btn-bg-primary-hover);
+  border-color: var(--btn-bg-primary-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  color: var(--btn-text-primary, #ffffff);
+  transform: translateY(-2px);
+}
+
+/* ─── 3. Accent CTA Button ─── */
+.btn-accent {
+  background-color: var(--brand-accent);
+  border: 1px solid var(--brand-accent);
+  color: #ffffff;
+}
+
+.btn-accent:hover {
+  background-color: var(--brand-accent-hover);
+  border-color: var(--brand-accent-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ─── 4. Secondary Outline Button ─── */
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--btn-border-secondary, var(--bg-border));
+  color: var(--btn-text-secondary, var(--ink-secondary));
+}
+
+.btn-outline:hover {
+  background-color: var(--btn-bg-secondary-hover);
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+
+/* ─── 5. States (Disabled & Active) ─── */
+.btn-accent:disabled,
+.btn-outline:disabled,
+.btn-solid:disabled,
+.submit-btn:disabled {
+  background-color: var(--bg-border);
+  border-color: var(--bg-border);
+  box-shadow: none;
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}

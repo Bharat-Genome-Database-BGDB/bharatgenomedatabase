@@ -1,0 +1,207 @@
+/* src/styles/components/cards.css - Universal Card Component Styles */
+
+/* ─── 1. Core Card Component ─── */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 2px solid var(--card-border-accent);
+  border-radius: var(--border-radius-bento, 12px);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px;
+  transition: all var(--transition-smooth, 0.2s ease);
+}
+
+.card:hover {
+  border-color: var(--card-border-accent);
+  border-left-width: 4px;
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* Card Typography Helpers */
+.card-subtitle {
+  color: var(--brand-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.card-title {
+  color: var(--ink-primary);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-body {
+  color: var(--text-main);
+  flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ─── 2. Modifiers & Sub-Elements ─── */
+.badge {
+  background-color: var(--brand-surface-subtle);
+  border-radius: 20px;
+  color: var(--brand-accent);
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.card-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card-icon,
+.icon-box {
+  align-items: center;
+  background-color: var(--brand-surface-subtle);
+  border-radius: 12px;
+  color: var(--brand-primary);
+  display: flex;
+  font-size: 20px;
+  height: 50px;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 50px;
+}
+
+.card-list {
+  display: grid;
+  gap: 12px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  list-style: none;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.card-list li {
+  align-items: center;
+  color: var(--text-main);
+  display: flex;
+  font-size: 0.95rem;
+  gap: 8px;
+}
+
+/* ─── 3. Special Feature & Page Modifiers ─── */
+
+/* Contact Page Layout */
+.contact-grid-layout {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+.contact-sidebar {
+  background-color: var(--brand-surface-subtle);
+  border: none;
+}
+
+/* FAQ Card Modifier */
+.faq-card {
+  border-left: 4px solid var(--card-border-accent);
+  cursor: pointer;
+}
+
+.faq-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Partners Logo Container */
+.card-logo-wrap {
+  align-items: center;
+  background-color: var(--bg-section);
+  border: 1px solid var(--bg-border);
+  border-radius: 12px;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  margin-bottom: 24px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.card-logo-wrap img {
+  max-height: 70%;
+  max-width: 70%;
+  object-fit: contain;
+}
+
+/* Transparency & Data Grid Helpers */
+.registry-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 24px;
+}
+
+.registry-item {
+  background-color: var(--brand-surface-subtle);
+  border-left: 3px solid var(--brand-primary);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+/* Leadership & Trustee Avatar Initials */
+.initials-box {
+  align-items: center;
+  background-color: var(--brand-surface-subtle);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  color: var(--brand-primary);
+  display: flex;
+  flex-shrink: 0;
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 700;
+  height: 90px;
+  justify-content: center;
+  width: 90px;
+}
+
+/* Compound Featured Containers */
+.card-section-featured {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-bento, 16px);
+  border-top: 4px solid var(--card-border-accent);
+  box-shadow: var(--card-shadow);
+  margin-bottom: 32px;
+  padding: 48px;
+}
+
+.card-info-box {
+  background-color: var(--brand-surface-subtle);
+  border: none;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+/* ─── 4. Responsive Breakpoints ─── */
+@media (min-width: 768px) {
+  .card-horizontal {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-grid-layout {
+    gap: 48px;
+    grid-template-columns: 1fr 1fr;
+  }
+}

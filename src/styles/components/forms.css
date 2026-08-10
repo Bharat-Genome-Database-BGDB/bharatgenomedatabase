@@ -1,0 +1,71 @@
+/* src/styles/components/forms.css - Universal Form Component Styles */
+
+/* ─── 1. Form Layout & Groups ─── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: var(--ink-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ─── 2. Input & Textarea Controls ─── */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background-color: var(--form-input-bg, #ffffff);
+  border: 1px solid var(--form-input-border, var(--bg-border));
+  border-radius: 12px;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 16px;
+  transition: all var(--transition-smooth, 0.2s ease);
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--form-focus-ring);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* ─── 3. Feedback Alert States ─── */
+.form-feedback {
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 16px;
+  text-align: center;
+}
+
+.form-feedback.error {
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
+.form-feedback.success {
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  color: #166534;
+}
