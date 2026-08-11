@@ -16,6 +16,11 @@ const Header = () => {
   const pathname = usePathname();
   const menuRef = useRef();
 
+  // --- Environment Check for Test / Staging Deployments ---
+  const isTestEnvironment = 
+    process.env.NEXT_PUBLIC_NETLIFY_CONTEXT !== 'production' || 
+    process.env.NEXT_PUBLIC_GIT_BRANCH === 'test';
+
   // --- BGDB Master Navigation Configuration ---
   const navLinks = [
     { label: "About Us", to: "/about" },
@@ -83,7 +88,13 @@ const Header = () => {
           <Link href="/" className="header__brand">
             <img src="/images/global/Logo.png" alt="Bharat Genome Database Logo" className="brand-logo" />
             <div className="brand-text">
-              <h1 className="brand-title">Bharat Genome Database</h1>
+              <h1 className="brand-title">
+                Bharat Genome Database
+                {/* Render "TEST" badge strictly on non-production / test deployments */}
+                {isTestEnvironment && (
+                  <span className="test-badge">TEST</span>
+                )}
+              </h1>
               <p className="brand-tagline">National Genomic Data Repository</p>
             </div>
           </Link>
