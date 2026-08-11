@@ -94,7 +94,6 @@ const Header = () => {
               <p className="brand-tagline">National Genomic Data Repository</p>
             </div>
             <span className="test-badge">TEST</span>
-
           </Link>
 
           <button
