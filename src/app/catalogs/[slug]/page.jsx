@@ -76,7 +76,6 @@ export default function SpeciesDetailPage() {
     );
   }
 
-
   return (
     <Layout>
       <div className="container section-stack" style={{ paddingTop: '2.5rem' }}>

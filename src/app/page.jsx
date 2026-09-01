@@ -62,8 +62,8 @@ export default function HomePage() {
   return (
     <Layout>
       <div className="content-wrapper home-wrapper">
-        
-        {/* Hero Section */}
+
+        {/* 1. Hero Section */}
         <div className="home-hero">
           <h1 className="home-hero-title">
             Bharat Genome Database (BGDB)
@@ -81,7 +81,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Live Database Metrics Counter (The Proof) */}
+        {/* 2. Live Database Metrics Counter */}
         <div className="home-stats-row">
           <div className="home-stat-box">
             <div className="home-stat-number">{totalSpeciesCount > 0 ? totalSpeciesCount : '—'}</div>
@@ -97,7 +97,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Featured Species Auto-Scrolling Carousel with Hover Tooltips */}
+        {/* 4. Featured Species Auto-Scrolling Carousel */}
         {!loading && featuredSpecies.length > 0 && (
           <div className="home-carousel-section">
             <div className="home-carousel-header">
@@ -115,13 +115,13 @@ export default function HomePage() {
             </div>
 
             <div className="home-carousel-container">
-              <div 
+              <div
                 className="home-carousel-track"
                 style={{ transform: `translateX(-${currentIndex * 320}px)` }}
               >
                 {featuredSpecies.map((species) => (
                   <div key={species.id} className="home-carousel-card">
-                    
+
                     {/* Card Image */}
                     <div className="home-carousel-img-wrap">
                       {species.cover_image_url ? (
@@ -142,7 +142,7 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    {/* Hover Tooltip Overlay (Appears on Hover) */}
+                    {/* Hover Tooltip Overlay */}
                     <div className="home-carousel-tooltip">
                       <div className="home-tooltip-title">{species.common_name}</div>
                       <div style={{ fontStyle: 'italic', fontSize: '0.85rem', marginBottom: '0.75rem', color: '#38bdf8' }}>
@@ -152,7 +152,7 @@ export default function HomePage() {
                       <div className="home-tooltip-stats"><strong>Genome Size:</strong> {species.genome_size_mb ? `${species.genome_size_mb} Mb` : 'Pending'}</div>
                       <div className="home-tooltip-stats"><strong>Accession:</strong> {species.assembly_accession || 'N/A'}</div>
                       <div style={{ marginTop: '1rem' }}>
-                        <Link 
+                        <Link
                           href={`/catalogs/${species.slug}`}
                           className="btn-solid"
                           style={{ fontSize: '0.8rem', padding: '0.4rem 0.8rem', display: 'inline-block', textDecoration: 'none' }}
@@ -169,9 +169,18 @@ export default function HomePage() {
           </div>
         )}
 
-        {/* National Initiatives & Core Pillars (Bento Grid) */}
+        {/* 🌟 3. SSF Core Initiative Mid-Page Banner Section */}
+        <div className="home-banner-container">
+          <img
+            src="/images/home/ssf-initiative-banner.png"
+            alt="A Core Scientific Initiative of the Sivasakthi Science Foundation (SSF)"
+            className="home-banner-img"
+          />
+        </div>
+
+        {/* 5. National Initiatives & Core Pillars (Bento Grid) */}
         <div className="home-bento-grid">
-          
+
           <div className="home-bento-card">
             <div>
               <div className="home-bento-icon">🌳</div>

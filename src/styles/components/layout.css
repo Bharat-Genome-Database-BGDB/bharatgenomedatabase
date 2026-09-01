@@ -1,4 +1,45 @@
-/* src/styles/components/layout.css - Universal Page Layout & Grid Utilities */
+/* src/styles/components/layout.css - 
+/* src/styles/components/layout.css */
+
+/* ─── 1. Indian Flag Palette Variables ─── */
+:root {
+  --flag-saffron: #FF671F;
+  --flag-white: #FFFFFF;
+  --flag-green: #046A38;
+}
+
+/* ─── 2. Root Body Canvas Layout ─── */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  
+  /* Horizontal Tricolor Gradient Canvas */
+  background: linear-gradient(
+    180deg,
+    rgba(245, 89, 17, 0.12) 0%,
+    #FFFFFF 60%,
+    rgba(1, 52, 27, 0.12) 100%
+  ) !important;
+  background-attachment: fixed;
+}
+
+/* ─── 3. Content Wrapper Container ─── */
+.content-container,
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Elevated white card container sitting above the background gradient */
+.layout-card-surface {
+  background-color: var(--color-white, #ffffff);
+  border-radius: var(--border-radius-bento, 12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
 
 /* ─── 1. Shell Containers & Main Wrappers ─── */
 .container {
