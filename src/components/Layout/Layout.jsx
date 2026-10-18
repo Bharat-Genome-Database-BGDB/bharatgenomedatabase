@@ -14,14 +14,12 @@ export default function Layout({ title, description, children }) {
   useEffect(() => {
     const baseBranding = "Bharat Genome Database";
 
-    // 1. Safe Title Update
     if (!title || title.toLowerCase() === "home") {
       document.title = baseBranding;
     } else {
       document.title = `${title} | ${baseBranding}`;
     }
 
-    // 2. Safe Meta Description Update
     if (description) {
       let metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
