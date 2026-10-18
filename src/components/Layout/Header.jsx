@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "@styles/header.css";
@@ -15,11 +15,6 @@ const Header = () => {
 
   const pathname = usePathname();
   const menuRef = useRef();
-
-  // --- Environment Check for Test / Staging Deployments ---
-  const isTestEnvironment =
-    process.env.NEXT_PUBLIC_NETLIFY_CONTEXT !== 'production' ||
-    process.env.NEXT_PUBLIC_GIT_BRANCH === 'test';
 
   // --- BGDB Master Navigation Configuration ---
   const navLinks = [
@@ -88,12 +83,7 @@ const Header = () => {
           <Link href="/" className="header__brand">
             <img src="/images/global/Logo.png" alt="Bharat Genome Database Logo" className="brand-logo" />
             <div className="brand-text">
-              <h1 className="brand-title">
-                Bharat Genome Database
-                {isTestEnvironment && (
-                  <span className="test-badge">TEST</span>
-                )}
-              </h1>
+              <h1 className="brand-title">Bharat Genome Database</h1>
               <p className="brand-tagline">National Genomic Data Repository</p>
             </div>
           </Link>
