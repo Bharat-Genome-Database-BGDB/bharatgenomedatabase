@@ -6,46 +6,34 @@ import Footer from "./Footer";
 
 /**
  * @component Layout
- * @description Master framework template wrapper handling dynamic document titles, 
- * meta descriptions, cache-busting favicon linking, and rendering the global Header and Footer shell for BGDB.
+ * @description Master template wrapper handling document titles, 
+ * page meta descriptions, and rendering the global Header and Footer shell for BGDB.
  */
 export default function Layout({ title, description, children }) {
 
   useEffect(() => {
     const baseBranding = "Bharat Genome Database";
 
-    // 1. Handle Dynamic Breadcrumb Document Titles
+    // 1. Safe Title Update
     if (!title || title.toLowerCase() === "home") {
       document.title = baseBranding;
     } else {
       document.title = `${title} | ${baseBranding}`;
     }
 
-    // 2. Dynamically Update Meta Description Tag for SEO Crawlers
+    // 2. Safe Meta Description Update
     if (description) {
       let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.name = 'description';
-        document.head.appendChild(metaDesc);
+      if (metaDesc) {
+        metaDesc.setAttribute('content', description);
       }
-      metaDesc.content = description;
     }
-
-    // 3. Force-Inject Favicon to Override Aggressive Browser Caches
-    let faviconLink = document.querySelector('link[rel="icon"]') || document.querySelector('link[rel="shortcut icon"]');
-    if (!faviconLink) {
-      faviconLink = document.createElement('link');
-      faviconLink.rel = 'icon';
-      document.head.appendChild(faviconLink);
-    }
-    faviconLink.href = `/favicon.ico?v=${Date.now()}`;
   }, [title, description]);
 
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className="content-container">{children}</main>
       <Footer />
     </>
   );
