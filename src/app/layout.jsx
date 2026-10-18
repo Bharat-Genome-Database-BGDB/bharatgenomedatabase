@@ -4,16 +4,16 @@ import "@styles/variables.scss";
 
 export const metadata = {
   title: {
-    default: "GenAI Research Labs | Computational Genomics & Molecular AI",
+    default: "Bharat Genome Database (BGDB)",
     template: "%s | GenAI Research Labs"
   },
-  description: "Advancing interdisciplinary research at the intersection of deep learning and multi-omics. Developing open-source foundation models, sequence transformers, and pipeline architectures for predictive structural biology.",
+  description: "National Genomic Data Repository for Flora, Fauna, and Microbes.",
   keywords: ["Computational Genomics", "GenAI Labs", "Deep Learning Biology", "Multi-Omics", "Sequence Transformers", "Bharat Genome Database"],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google Fonts Preconnect and Optimization */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>
