@@ -7,12 +7,14 @@ import Layout from '@components/Layout/Layout';
 import '@styles/main.css';
 
 export default function CatalogsPage() {
+  const [mounted, setMounted] = useState(false);
   const [speciesList, setSpeciesList] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
+    setMounted(true);
     fetchCatalogs();
   }, []);
 
@@ -53,6 +55,19 @@ export default function CatalogsPage() {
   }, {});
 
   const activeAlphabetKeys = Object.keys(groupedByAlphabet).sort();
+
+  // Guard against server/client hydration mismatch
+  if (!mounted) {
+    return (
+      <Layout>
+        <div className="container section-stack">
+          <div className="catalog-loading-box text-center">
+            Loading species catalog...
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -105,21 +120,21 @@ export default function CatalogsPage() {
 
         {/* Loading & Error States */}
         {loading && (
-          <div className="text-center" style={{ padding: '4rem 0', color: 'var(--ink-muted)', fontSize: '1.1rem' }}>
+          <div className="catalog-loading-box text-center">
             ⏳ Loading species catalog from database...
           </div>
         )}
 
         {errorMessage && (
-          <div className="text-center" style={{ padding: '2rem', color: '#dc2626', background: '#ffeeec', borderRadius: '8px' }}>
+          <div className="catalog-error-box text-center">
             {errorMessage}
           </div>
         )}
 
         {!loading && activeAlphabetKeys.length === 0 && (
-          <div className="card text-center" style={{ padding: '4rem 2rem' }}>
+          <div className="card catalog-empty-card text-center">
             <h3 className="card-title">No species found matching your search criteria.</h3>
-            <p style={{ color: 'var(--ink-muted)' }}>Try clearing your search filter to view all available entries.</p>
+            <p className="card-body">Try clearing your search filter to view all available entries.</p>
           </div>
         )}
 
@@ -129,11 +144,11 @@ export default function CatalogsPage() {
 
             {/* Alphabet Section Heading */}
             <div className="catalog-section-heading">
-              <h2 className="card-title" style={{ fontSize: '2rem', margin: 0, color: 'var(--brand-primary)' }}>
+              <h2 className="card-title catalog-letter-heading">
                 {letter}
               </h2>
-              <span style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', fontWeight: 600 }}>
-                ({groupedByAlphabet[letter].length} {groupedByAlphabet[letter].length === 1 ? 'species' : 'species'})
+              <span className="catalog-count-pill">
+                ({groupedByAlphabet[letter].length} species)
               </span>
             </div>
 
@@ -169,16 +184,16 @@ export default function CatalogsPage() {
                         )}
                       </div>
 
-                      <h3 className="card-title" style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>
+                      <h3 className="card-title catalog-item-title">
                         {species.common_name}
                       </h3>
 
-                      <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--brand-primary)', fontSize: '1rem', marginBottom: '0.75rem' }}>
+                      <p className="catalog-sci-name">
                         {species.scientific_name}
                       </p>
 
                       {species.family && (
-                        <p style={{ fontSize: '0.9rem', color: 'var(--ink-muted)', marginBottom: '1.5rem' }}>
+                        <p className="catalog-family-meta">
                           <strong>Family:</strong> {species.family}
                         </p>
                       )}
