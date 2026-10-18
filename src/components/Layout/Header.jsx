@@ -26,8 +26,8 @@ const Header = () => {
     { label: "About Us", to: "/about" },
     { label: "Genomic Catalogs", to: "/catalogs" },
     { label: "Tools & Pipelines", to: "/tools" },
-    { label: "ODOG Initiative", to: "/odog" },
-    { label: "Academics", to: "/academics" },
+    { label: "ODOG Initiative", to: "/odog", unbuilt: true },
+    { label: "Academics", to: "/academics", unbuilt: true },
     { label: "Contact Us", to: "/contact" }
   ];
 
@@ -90,10 +90,12 @@ const Header = () => {
             <div className="brand-text">
               <h1 className="brand-title">
                 Bharat Genome Database
+                {isTestEnvironment && (
+                  <span className="test-badge">TEST</span>
+                )}
               </h1>
               <p className="brand-tagline">National Genomic Data Repository</p>
             </div>
-            
           </Link>
 
           <button
@@ -126,7 +128,11 @@ const Header = () => {
                       </ul>
                     </>
                   ) : (
-                    <Link href={link.to} className={`nav-link-item ${pathname === link.to ? 'active' : ''}`}>
+                    <Link
+                      href={link.to}
+                      prefetch={link.unbuilt ? false : undefined}
+                      className={`nav-link-item ${pathname === link.to ? 'active' : ''}`}
+                    >
                       {link.label}
                     </Link>
                   )}
