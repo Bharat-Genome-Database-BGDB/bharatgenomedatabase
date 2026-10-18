@@ -7,7 +7,7 @@ import "@styles/header.css";
 
 /**
  * @component Header
- * @description The Master Double-Header Navigation for Bharat Genome Database (BGDB).
+ * @description Master Double-Header Navigation for Bharat Genome Database (BGDB).
  */
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +16,6 @@ const Header = () => {
   const pathname = usePathname();
   const menuRef = useRef();
 
-  // --- BGDB Master Navigation Configuration ---
   const navLinks = [
     { label: "About Us", to: "/about" },
     { label: "Genomic Catalogs", to: "/catalogs" },

@@ -1,17 +1,14 @@
 'use client';
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 
-/**
- * @component Layout
- * @description Master template wrapper handling document titles, 
- * page meta descriptions, and rendering the global Header and Footer shell for BGDB.
- */
 export default function Layout({ title, description, children }) {
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const baseBranding = "Bharat Genome Database";
 
     if (!title || title.toLowerCase() === "home") {
@@ -21,7 +18,7 @@ export default function Layout({ title, description, children }) {
     }
 
     if (description) {
-      let metaDesc = document.querySelector('meta[name="description"]');
+      const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
         metaDesc.setAttribute('content', description);
       }
@@ -31,7 +28,13 @@ export default function Layout({ title, description, children }) {
   return (
     <>
       <Header />
-      <main className="content-container">{children}</main>
+      <main className="content-container">
+        {mounted ? children : (
+          <div className="container section-stack">
+            <div className="catalog-loading-box text-center">Loading...</div>
+          </div>
+        )}
+      </main>
       <Footer />
     </>
   );
