@@ -1,13 +1,13 @@
 'use client';
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "@styles/header.css";
 
 /**
  * @component Header
- * @description Master Double-Header Navigation for Bharat Genome Database (BGDB).
+ * @description The Master Double-Header Navigation for Bharat Genome Database (BGDB).
  */
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,12 +16,18 @@ const Header = () => {
   const pathname = usePathname();
   const menuRef = useRef();
 
+  // --- Environment Check for Test / Staging Deployments ---
+  const isTestEnvironment =
+    process.env.NEXT_PUBLIC_NETLIFY_CONTEXT !== 'production' ||
+    process.env.NEXT_PUBLIC_GIT_BRANCH === 'test';
+
+  // --- BGDB Master Navigation Configuration ---
   const navLinks = [
     { label: "About Us", to: "/about" },
     { label: "Genomic Catalogs", to: "/catalogs" },
     { label: "Tools & Pipelines", to: "/tools" },
-    { label: "ODOG Initiative", to: "/odog", unbuilt: true },
-    { label: "Academics", to: "/academics", unbuilt: true },
+    { label: "ODOG Initiative", to: "/odog" },
+    { label: "Academics", to: "/academics" },
     { label: "Contact Us", to: "/contact" }
   ];
 
@@ -82,9 +88,12 @@ const Header = () => {
           <Link href="/" className="header__brand">
             <img src="/images/global/Logo.png" alt="Bharat Genome Database Logo" className="brand-logo" />
             <div className="brand-text">
-              <h1 className="brand-title">Bharat Genome Database</h1>
+              <h1 className="brand-title">
+                Bharat Genome Database
+              </h1>
               <p className="brand-tagline">National Genomic Data Repository</p>
             </div>
+            
           </Link>
 
           <button
@@ -117,11 +126,7 @@ const Header = () => {
                       </ul>
                     </>
                   ) : (
-                    <Link
-                      href={link.to}
-                      prefetch={link.unbuilt ? false : undefined}
-                      className={`nav-link-item ${pathname === link.to ? 'active' : ''}`}
-                    >
+                    <Link href={link.to} className={`nav-link-item ${pathname === link.to ? 'active' : ''}`}>
                       {link.label}
                     </Link>
                   )}
